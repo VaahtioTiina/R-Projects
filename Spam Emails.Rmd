@@ -6,7 +6,7 @@ knit: (function(input_file, encoding) {
  encoding=encoding,
  output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "Tiina Vaahtio"
-date: "6/24/2020"
+date: ""
 output: html_document
 ---
 
@@ -74,7 +74,7 @@ test<-subset(spam, split=="FALSE")
 ```
 
 -Fit model 
-```{r}
+```{r warning=FALSE}
 email_model<- glm(yesno ~ lencap+dollar+bang+money+n000+make, data = train, family= "binomial")
 
 summary(email_model)
