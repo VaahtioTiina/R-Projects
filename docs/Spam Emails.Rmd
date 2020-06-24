@@ -1,12 +1,7 @@
 ---
 title: "Classification Model for Spam Emails"
-knit: (function(input_file, encoding) {
-  out_dir <- 'docs';
-  rmarkdown::render(input_file,
- encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "Tiina Vaahtio"
-date: ""
+date: "6/24/2020"
 output: html_document
 ---
 
@@ -49,7 +44,7 @@ names(spam)[names(spam)=="crl.tot"]<-"lencap"
 ```
 
 - Transform yesno column to 0, 1:
-```{r echo=FALSE}
+```{r echo=FALSE,  message=FALSE}
 library(car)
 ```
 
@@ -62,7 +57,7 @@ spam$yesno<-recode(spam$yesno, "'y'=1; 'n'=0")
 
 -Create training and test datasets 
 
-```{r echo=FALSE}
+```{r echo=FALSE,  message=FALSE}
 library(caTools)
 ```
 
@@ -96,7 +91,7 @@ confmatrix
 print((confmatrix[[1,1]]+confmatrix[[2,2]])/ sum(confmatrix))
 ```
 -ROC plot
-```{r echo=FALSE}
+```{r echo=FALSE,  message=FALSE}
 library(pROC)
 roc(test$yesno, res, plot=TRUE, legacy.axes=TRUE, percent=TRUE, xlab="False Positive Percentage", ylab="True Postive Percentage", col="#377eb8", lwd=4, print.auc=TRUE)
 ```
